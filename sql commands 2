@@ -1,0 +1,47 @@
+create database dayzz;
+use dayzz;
+
+
+create table stud (id int,name varchar(10),dept varchar(5));
+
+insert into stud values(100,"jameel","cse");
+insert into stud values(101,"kavin","ece");
+insert into stud values(102,"ron","ece");
+insert into stud values(102,"saran","cse");
+
+select * from stud;
+
+set sql_safe_updates=0;
+
+update stud set id=103 where name="ron";
+update stud set dept="eee" where dept="cse";
+update stud set dept=if(id=101,"ece","cse");
+
+alter table stud add column mark int(10);
+update stud set mark=if(dept="cse",100,50);
+update stud set mark=40 where name like "r%";
+
+
+
+
+select * from stud order by mark;
+select* from stud order by mark desc;
+select id,name from stud order by mark;
+select count(*)from stud;
+select dept,count(*) from stu group by dept;
+select* from stud where dept="cse";
+select * from stud  where id>100 and id<102;
+
+select *,case
+when mark>50 then "pass"
+when mark>70 then "distinction"
+else "fail"
+end as grade from stu;
+
+select avg(mark) from stu;
+delete from stud where id="100";
+
+select*from stud;
+
+delete from stud where name like "j%";
+delete from stud;
